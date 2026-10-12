@@ -81,7 +81,7 @@ class Item(Base):
     user = relationship("User", back_populates="items")
     category = relationship("Category", back_populates="items")
     zone = relationship("Zone", back_populates="items")
-    claims = relationship("Claim", back_populates="item")
+    claims = relationship("Claim", back_populates="item", cascade="all, delete-orphan")
 
 class ClaimStatus(str, enum.Enum):
     pending = "pending"

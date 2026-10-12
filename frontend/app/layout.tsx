@@ -25,8 +25,15 @@ export default function RootLayout({
           <nav className="hidden md:flex bg-white shadow-sm p-4 justify-between items-center sticky top-0 z-10">
             <Link href="/" className="text-xl font-bold text-indigo-600">L&F Portal</Link>
             <div className="flex gap-6 items-center">
-              <Link href="/" className="hover:text-indigo-600">Home</Link>
-              <Link href="/items/new" className="bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">Post Item</Link>
+              <Link href="/" className="hover:text-indigo-600 font-medium">Feed</Link>
+              <Link href="/profile" className="hover:text-indigo-600 font-medium flex items-center gap-1.5">
+                <User size={18} />
+                <span>My Profile</span>
+              </Link>
+              <Link href="/items/new" className="bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition flex items-center gap-1.5 shadow-sm">
+                <PlusCircle size={18} />
+                <span>Post Item</span>
+              </Link>
             </div>
           </nav>
           

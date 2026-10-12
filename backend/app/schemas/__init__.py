@@ -23,19 +23,51 @@ class UserResponse(UserBase):
         from_attributes = True
 
 # --- Category ---
-class CategoryResponse(BaseModel):
-    id: int
+class CategoryBase(BaseModel):
     name: str
     icon: Optional[str] = None
+
+class CategoryCreate(CategoryBase):
+    pass
+
+class CategoryResponse(CategoryBase):
+    id: int
     class Config:
         from_attributes = True
 
 # --- Zone ---
-class ZoneResponse(BaseModel):
-    id: int
+class ZoneBase(BaseModel):
     name: str
     lat: Optional[float] = None
     lng: Optional[float] = None
+
+class ZoneCreate(ZoneBase):
+    pass
+
+class ZoneResponse(ZoneBase):
+    id: int
+    class Config:
+        from_attributes = True
+
+# --- Claim ---
+class ClaimCreate(BaseModel):
+    proof_description: str
+    contact_info: Optional[str] = None
+    answers_json: Optional[Any] = None
+
+class ClaimStatusUpdate(BaseModel):
+    status: ClaimStatus
+
+class ClaimResponse(BaseModel):
+    id: int
+    item_id: int
+    claimant_id: int
+    answers_json: Optional[Any] = None
+    ai_confidence: Optional[str] = None
+    status: ClaimStatus
+    reviewed_by: Optional[int] = None
+    created_at: datetime
+    claimant: Optional[UserResponse] = None
     class Config:
         from_attributes = True
 
@@ -59,6 +91,9 @@ class ItemBase(BaseModel):
 class ItemCreate(ItemBase):
     pass
 
+class ItemStatusUpdate(BaseModel):
+    status: ItemStatus
+
 class ItemResponse(ItemBase):
     id: int
     user_id: int
@@ -71,3 +106,11 @@ class ItemResponse(ItemBase):
 
     class Config:
         from_attributes = True
+
+class ItemDetailResponse(ItemResponse):
+    claims: Optional[List[ClaimResponse]] = []
+
+# --- User Profile ---
+class UserProfileResponse(UserResponse):
+    items: List[ItemResponse] = []
+    claims: List[ClaimResponse] = []

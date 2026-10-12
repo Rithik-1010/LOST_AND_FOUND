@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Campus Lost & Found — Frontend Client
 
-## Getting Started
+The frontend for the Campus Lost & Found Portal, built with **Next.js 16 (App Router)**, **React 19**, **TypeScript**, and **Tailwind CSS v4**.
 
-First, run the development server:
+---
 
+## 🚀 Features
+
+- **Campus Feed (`/`)**: Live search, category filtering, zone filtering, lost/found tabs, and item status badges.
+- **Report Item (`/items/new`)**: Interactive form with real image upload, preview, and campus location tagging.
+- **Item Details (`/items/[id]`)**: Full item views, custody status, ownership claim modal, and owner claim approval/rejection actions.
+- **Profile Dashboard (`/profile`)**: Student activity stats, Karma score tracker, and tabs for reported items and submitted claims.
+- **State Management**: TanStack Query v5 with optimistic caching and refetching.
+
+---
+
+## 🛠️ Getting Started
+
+### 1. Install Dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Configure Environment
+Create `.env.local` if custom backend URL is desired (defaults to `http://localhost:8000/api/v1`):
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Run Dev Server
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Visit [http://localhost:3000](http://localhost:3000) to view the application.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📦 Build for Production
+```bash
+npm run build
+npm start
+```
